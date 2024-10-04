@@ -1,12 +1,21 @@
 // GameScreen.js
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Animated,
+  Pressable,
+} from 'react-native';
 import questionsData from './questions.json';
+import { Ionicons } from '@expo/vector-icons'; // For the icon in the toggle button
 
 export default function GameScreen({ route, navigation }) {
-  const [currentQuestion, setCurrentQuestion] = useState('');
+  const [currentQuestion, setCurrentQuestion] = useState({});
   const [level, setLevel] = useState(route.params.level);
   const [showLevelScreen, setShowLevelScreen] = useState(true);
+  const [showTranslation, setShowTranslation] = useState(false);
 
   const questionAnim = useRef(new Animated.Value(0)).current;
   const buttonsAnim = useRef(new Animated.Value(0)).current;
@@ -19,7 +28,10 @@ export default function GameScreen({ route, navigation }) {
       const randomIndex = Math.floor(Math.random() * questions.length);
       setCurrentQuestion(questions[randomIndex]);
     } else {
-      setCurrentQuestion('No questions available.');
+      setCurrentQuestion({
+        english: 'No questions available.',
+        korean: '사용 가능한 질문이 없습니다.',
+      });
     }
   };
 
@@ -72,6 +84,10 @@ export default function GameScreen({ route, navigation }) {
     }).start();
   };
 
+  const toggleTranslation = () => {
+    setShowTranslation(!showTranslation);
+  };
+
   return (
     <View style={styles.container}>
       {showLevelScreen ? (
@@ -87,16 +103,31 @@ export default function GameScreen({ route, navigation }) {
         </Animated.View>
       ) : (
         <>
-          <Animated.Text
-            style={[
-              styles.questionText,
-              {
-                opacity: questionAnim,
-              },
-            ]}
+          {/* Translation Toggle Button */}
+          <TouchableOpacity style={styles.translationButton} onPress={toggleTranslation}>
+          <Animated.View
+          style={{
+            opacity: buttonsAnim,
+          }}>
+          
+            <Text style={styles.translationButtonText}>한</Text>
+          
+          </Animated.View>
+          </TouchableOpacity>
+
+          <Animated.View
+            style={{
+              opacity: questionAnim,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
-            {currentQuestion}
-          </Animated.Text>
+            <Text style={styles.questionText}>{currentQuestion.english}</Text>
+            {showTranslation && (
+              <Text style={styles.translationText}>{currentQuestion.korean}</Text>
+            )}
+          </Animated.View>
+
           <Animated.View
             style={[
               styles.buttonContainer,
@@ -109,7 +140,9 @@ export default function GameScreen({ route, navigation }) {
               <Text style={styles.buttonText}>New Question</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.smallButton} onPress={nextLevel}>
-              <Text style={styles.buttonText}>{level === 3 ? 'End Game' : 'Next Level'}</Text>
+              <Text style={styles.buttonText}>
+                {level === 3 ? 'End Game' : 'Next Level'}
+              </Text>
             </TouchableOpacity>
           </Animated.View>
         </>
@@ -136,12 +169,30 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontFamily: 'Poppins_700Bold',
   },
+  translationButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    backgroundColor: 'transparent',
+  },
+  translationButtonText: {
+    fontSize: 24,
+    color: '#FFFFFF',
+    fontFamily: 'Poppins_700Bold',
+  },
   questionText: {
     fontSize: 28,
     color: '#FFFFFF',
     fontFamily: 'Roboto_400Regular',
     textAlign: 'center',
-    marginBottom: 100,
+    marginBottom: 20,
+  },
+  translationText: {
+    fontSize: 22,
+    color: '#AAAAAA',
+    fontFamily: 'Roboto_400Regular',
+    textAlign: 'center',
+    marginTop: 10,
   },
   buttonContainer: {
     flexDirection: 'row',

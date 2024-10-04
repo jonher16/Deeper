@@ -1,101 +1,649 @@
 {
     "Level 1": [
-      "Given the choice, which person dead or alive would you like to share dinner with?",
-      "Before making a phone call do you rehearse what you are going to say?",
-      "Would you like to be famous? In what way?",
-      "What would you call a perfect day to you?",
-      "When did you last sing to someone else?",
-      "Do you think I like to read?",
-      "If you were able to live to 90 and could choose between having the mind or body of 30 year old you, which would you choose?",
-      "Do you have a secret hunch about how you will die?",
-      "Name 3 things you think we have in common.",
-      "What in our relationship are you most grateful for?",
-      "What do you think a suitable career, that isn't my current one, would be for me?",
-      "What do you think your most defining characteristic is?",
-      "If you could wake up tomorrow having gained one quality or ability what would it be?",
-      "What is your greatest accomplishment?",
-      "What do you like about yourself?",
-      "Do you think I was popular in highschool?",
-      "Do I look like I like spicy food?",
-      "What, if anything, do you consider too serious to be joked about?",
-      "Your house, containing everything you own catches fire. After your loved ones and pets are safe, what one thing do you save?",
-      "Who do you admire?",
-      "What's a phrase you wish people would stop saying?",
-      "Based on what you already know about me, give me a Netflix recommendation."
+      {
+        "english": "Given the choice, which person dead or alive would you like to share dinner with?",
+        "korean": "선택할 수 있다면, 살아있거나 죽은 사람 중 누구와 저녁을 함께하고 싶나요?"
+      },
+      {
+        "english": "Before making a phone call do you rehearse what you are going to say?",
+        "korean": "전화하기 전에 말할 내용을 연습하나요?"
+      },
+      {
+        "english": "Would you like to be famous? In what way?",
+        "korean": "유명해지고 싶나요? 어떤 방식으로요?"
+      },
+      {
+        "english": "What would you call a perfect day to you?",
+        "korean": "당신에게 완벽한 하루는 어떤 모습인가요?"
+      },
+      {
+        "english": "When did you last sing to someone else?",
+        "korean": "마지막으로 다른 사람에게 노래를 불러준 적은 언제인가요?"
+      },
+      {
+        "english": "Do you think I like to read?",
+        "korean": "제가 독서를 좋아한다고 생각하나요?"
+      },
+      {
+        "english": "If you were able to live to 90 and could choose between having the mind or body of 30-year-old you, which would you choose?",
+        "korean": "90세까지 살 수 있다면, 30세의 마음이나 몸 중 하나를 선택할 수 있다면 무엇을 선택하시겠어요?"
+      },
+      {
+        "english": "Do you have a secret hunch about how you will die?",
+        "korean": "자신의 죽음에 대해 비밀스러운 예감이 있나요?"
+      },
+      {
+        "english": "Name 3 things you think you both have in common.",
+        "korean": "서로 공통점이 있다고 생각하는 세 가지를 말해보세요."
+      },
+      {
+        "english": "What do you think a suitable career, that isn't my current one, would be for me?",
+        "korean": "제 현재 직업이 아닌 다른 적합한 직업은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "What do you think your most defining characteristic is?",
+        "korean": "자신의 가장 대표적인 특징은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "If you could wake up tomorrow having gained one quality or ability what would it be?",
+        "korean": "내일 아침에 하나의 자질이나 능력을 얻는다면, 무엇이길 바라나요?"
+      },
+      {
+        "english": "What is your greatest accomplishment?",
+        "korean": "당신의 가장 큰 성취는 무엇인가요?"
+      },
+      {
+        "english": "What do you like about yourself?",
+        "korean": "자신에 대해 좋아하는 점은 무엇인가요?"
+      },
+      {
+        "english": "Do you think the other person was popular in high school?",
+        "korean": "상대방이 고등학교 때 인기가 많았을 것 같나요?"
+      },
+      {
+        "english": "What, if anything, do you consider too serious to be joked about?",
+        "korean": "농담하기엔 너무 심각하다고 생각하는 것이 있나요?"
+      },
+      {
+        "english": "Your house, containing everything you own catches fire. After your loved ones and pets are safe, what one thing do you save?",
+        "korean": "당신의 모든 것이 담긴 집에 불이 났습니다. 사랑하는 사람들과 반려동물을 구한 후, 한 가지를 더 구할 수 있다면 무엇을 선택하겠어요?"
+      },
+      {
+        "english": "Who do you admire?",
+        "korean": "존경하는 사람은 누구인가요?"
+      },
+      {
+        "english": "What's a phrase you wish people would stop saying?",
+        "korean": "사람들이 그만 사용했으면 하는 말은 무엇인가요?"
+      },
+      {
+        "english": "Based on what you already know about the other person, give them a Netflix recommendation.",
+        "korean": "상대방에 대해 알고 있는 것을 바탕으로, 넷플릭스 추천작을 하나 소개해주세요."
+      },
+      {
+        "english": "If you could have any superpower, what would it be and why?",
+        "korean": "어떤 초능력을 가질 수 있다면 무엇이며, 왜 그것을 선택하나요?"
+      },
+      {
+        "english": "What's your favorite way to spend a weekend?",
+        "korean": "주말을 보내는 가장 좋아하는 방법은 무엇인가요?"
+      },
+      {
+        "english": "Do you prefer the city or the countryside?",
+        "korean": "도시와 시골 중 어느 곳을 선호하시나요?"
+      },
+      {
+        "english": "What was the last book you read?",
+        "korean": "마지막으로 읽은 책은 무엇인가요?"
+      },
+      {
+        "english": "What's your favorite type of music or band?",
+        "korean": "가장 좋아하는 음악 장르나 밴드는 무엇인가요?"
+      },
+      {
+        "english": "Do you have a hobby that you're passionate about?",
+        "korean": "열정을 갖고 있는 취미가 있나요?"
+      },
+      {
+        "english": "What's your favorite food?",
+        "korean": "가장 좋아하는 음식은 무엇인가요?"
+      },
+      {
+        "english": "Are you a morning person or a night owl?",
+        "korean": "아침형 인간인가요, 저녁형 인간인가요?"
+      },
+      {
+        "english": "What's one thing on your bucket list?",
+        "korean": "버킷리스트에 있는 한 가지는 무엇인가요?"
+      },
+      {
+        "english": "Do you have any pets? Tell about them.",
+        "korean": "반려동물이 있나요? 그들에 대해 이야기해주세요."
+      },
+      {
+        "english": "What's your favorite movie genre?",
+        "korean": "가장 좋아하는 영화 장르는 무엇인가요?"
+      },
+      {
+        "english": "Do you enjoy cooking or baking?",
+        "korean": "요리나 베이킹을 즐기시나요?"
+      },
+      {
+        "english": "What's your favorite holiday and why?",
+        "korean": "가장 좋아하는 명절은 무엇이며, 그 이유는 무엇인가요?"
+      },
+      {
+        "english": "If you could learn any language instantly, which would it be?",
+        "korean": "어떤 언어든 즉시 배울 수 있다면, 무엇을 선택하시겠어요?"
+      },
+      {
+        "english": "What's your go-to comfort food?",
+        "korean": "당신이 즐겨 찾는 위안 음식은 무엇인가요?"
+      },
+      {
+        "english": "Do you prefer summer or winter?",
+        "korean": "여름과 겨울 중 어느 계절을 선호하시나요?"
+      },
+      {
+        "english": "What's your favorite sport or physical activity?",
+        "korean": "가장 좋아하는 스포츠나 신체 활동은 무엇인가요?"
+      },
+      {
+        "english": "Do you enjoy traveling? What's your favorite destination?",
+        "korean": "여행을 즐기시나요? 가장 좋아하는 여행지는 어디인가요?"
+      },
+      {
+        "english": "What's your favorite childhood memory?",
+        "korean": "가장 좋아하는 어린 시절의 추억은 무엇인가요?"
+      },
+      {
+        "english": "If you could meet any fictional character, who would it be?",
+        "korean": "어떤 가상의 캐릭터를 만날 수 있다면, 누구를 선택하시겠어요?"
+      }
     ],
     "Level 2": [
-      "If you could change anything about the way you were raised what would it be?",
-      "If a crystal ball could tell you anything about your life, your future or anything else what would you want to know?",
-      "Is there something you want in life but are afraid to do? What is holding you back?",
-      "What do you value most in a friendship?",
-      "What's your most treasured memory?",
-      "What's your most awful memory?",
-      "If you knew that you had one year to live, no exceptions, what about life would you do differently? Why?",
-      "What roles do love and affection play in your life?",
-      "What compliment means more to you than most people think?",
-      "How close and warm is your family? How does it differ from the one you hope to create?",
-      "How do you feel about your relationship with your parents?",
-      "What do you think are our most important similarities?",
-      "Of all the people you know whose death do you think would impact you the most?",
-      "Make three true 'I' statements, e.g., 'I feel connected.'",
-      "What was your first impression of me? How has that changed?",
-      "Complete the sentence 'I wish I had someone with whom I could share...'",
-      "What about me do you find strange or unfamiliar?",
-      "What is something you have lied to me about? Why did you lie?",
-      "What is your least favourite trait within yourself?",
-      "If you made a playlist for me, which song would be first?",
-      "What is the biggest hurdle you have overcome?",
-      "What do you think my real life super power is?",
-      "What's the last thing you lied to your parents about?",
-      "When was the last time you felt lucky to be you?",
-      "What is the most attractive quality about me that isn't physical?",
-      "If you could write a letter to your younger self before we met, what would you make sure they know?",
-      "What are you most excited for today? Big or small",
-      "What do you think your younger self needed to hear?",
-      "How do you wish you were perceived?",
-      "What about me surprises you?",
-      "How does someone win your vulnerability?"
+      {
+        "english": "If you could change anything about the way you were raised what would it be?",
+        "korean": "자신의 성장 방식에서 무엇이든 바꿀 수 있다면, 무엇을 바꾸고 싶나요?"
+      },
+      {
+        "english": "If a crystal ball could tell you anything about your life, your future or anything else what would you want to know?",
+        "korean": "수정구슬이 당신의 삶, 미래 또는 다른 것에 대해 무엇이든 말해준다면, 무엇을 알고 싶나요?"
+      },
+      {
+        "english": "Is there something you want in life but are afraid to do? What is holding you back?",
+        "korean": "삶에서 원하지만 두려워서 하지 못하는 것이 있나요? 무엇이 당신을 막고 있나요?"
+      },
+      {
+        "english": "What do you value most in a friendship?",
+        "korean": "우정에서 가장 중요하게 여기는 것은 무엇인가요?"
+      },
+      {
+        "english": "What's your most treasured memory?",
+        "korean": "가장 소중한 기억은 무엇인가요?"
+      },
+      {
+        "english": "What's your most awful memory?",
+        "korean": "가장 끔찍한 기억은 무엇인가요?"
+      },
+      {
+        "english": "If you knew that you had one year to live, no exceptions, what about life would you do differently? Why?",
+        "korean": "남은 삶이 1년밖에 없다면, 삶에서 무엇을 다르게 하겠나요? 왜 그렇게 하시겠어요?"
+      },
+      {
+        "english": "What roles do love and affection play in your life?",
+        "korean": "사랑과 애정은 당신의 삶에서 어떤 역할을 하나요?"
+      },
+      {
+        "english": "What compliment means more to you than most people think?",
+        "korean": "대부분의 사람들이 생각하는 것보다 당신에게 더 큰 의미를 지니는 칭찬은 무엇인가요?"
+      },
+      {
+        "english": "How close and warm is your family? How does it differ from the one you hope to create?",
+        "korean": "당신의 가족은 얼마나 가깝고 따뜻한가요? 당신이 만들고 싶은 가족과는 어떻게 다른가요?"
+      },
+      {
+        "english": "How do you feel about your relationship with your parents?",
+        "korean": "부모님과의 관계에 대해 어떻게 느끼시나요?"
+      },
+      {
+        "english": "What do you think are our most important similarities?",
+        "korean": "우리의 가장 중요한 공통점은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "Of all the people you know whose death do you think would impact you the most?",
+        "korean": "알고 있는 사람들 중에서, 누구의 죽음이 당신에게 가장 큰 영향을 미칠 것 같나요?"
+      },
+      {
+        "english": "Make three true 'I' statements, e.g., 'I feel connected.'",
+        "korean": "'나는 연결되어 있다고 느낀다'와 같이 세 가지 진실한 '나'에 대한 문장을 만들어보세요."
+      },
+      {
+        "english": "What was your first impression of me? How has that changed?",
+        "korean": "저에 대한 첫인상은 어땠나요? 어떻게 변했나요?"
+      },
+      {
+        "english": "Complete the sentence 'I wish I had someone with whom I could share...'",
+        "korean": "'함께 공유할 수 있는 누군가가 있었으면 좋겠다'라는 문장을 완성해보세요."
+      },
+      {
+        "english": "What about me do you find strange or unfamiliar?",
+        "korean": "저에 대해 낯설거나 이상하다고 느끼는 것은 무엇인가요?"
+      },
+      {
+        "english": "What is something you have lied to me about? Why did you lie?",
+        "korean": "저에게 거짓말한 것이 있나요? 왜 거짓말을 했나요?"
+      },
+      {
+        "english": "What is your least favourite trait within yourself?",
+        "korean": "자신에게서 가장 싫어하는 특성은 무엇인가요?"
+      },
+      {
+        "english": "If you made a playlist for me, which song would be first?",
+        "korean": "저를 위해 플레이리스트를 만든다면, 첫 번째 곡은 무엇인가요?"
+      },
+      {
+        "english": "What is the biggest hurdle you have overcome?",
+        "korean": "당신이 극복한 가장 큰 장애물은 무엇인가요?"
+      },
+      {
+        "english": "What do you think my real life super power is?",
+        "korean": "저의 실제 삶의 초능력은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "What's the last thing you lied to your parents about?",
+        "korean": "부모님께 마지막으로 한 거짓말은 무엇인가요?"
+      },
+      {
+        "english": "When was the last time you felt lucky to be you?",
+        "korean": "마지막으로 자신이 되어 운이 좋다고 느낀 적은 언제인가요?"
+      },
+      {
+        "english": "What is the most attractive quality about me that isn't physical?",
+        "korean": "저의 비신체적인 가장 매력적인 특성은 무엇인가요?"
+      },
+      {
+        "english": "If you could write a letter to your younger self before we met, what would you make sure they know?",
+        "korean": "우리 만나기 전의 어린 시절의 자신에게 편지를 쓴다면, 꼭 알게 하고 싶은 것은 무엇인가요?"
+      },
+      {
+        "english": "What are you most excited for today? Big or small",
+        "korean": "오늘 무엇에 가장 기대하고 있나요? 크든 작든"
+      },
+      {
+        "english": "What do you think your younger self needed to hear?",
+        "korean": "당신의 어린 시절의 자신이 들어야 했던 말은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "How do you wish you were perceived?",
+        "korean": "사람들이 당신을 어떻게 인식했으면 좋겠나요?"
+      },
+      {
+        "english": "What about me surprises you?",
+        "korean": "저에 대해 놀라운 점은 무엇인가요?"
+      },
+      {
+        "english": "How does someone win your vulnerability?",
+        "korean": "어떻게 하면 당신의 취약함을 받아들일 수 있게 되나요?"
+      },
+      {
+        "english": "What is something you've always wanted to do but haven't yet?",
+        "korean": "항상 하고 싶었지만 아직 하지 않은 것은 무엇인가요?"
+      },
+      {
+        "english": "How do you define happiness?",
+        "korean": "행복을 어떻게 정의하나요?"
+      },
+      {
+        "english": "What's the most challenging thing you've ever done?",
+        "korean": "지금까지 한 일 중 가장 도전적이었던 것은 무엇인가요?"
+      },
+      {
+        "english": "What are your core values?",
+        "korean": "당신의 핵심 가치는 무엇인가요?"
+      },
+      {
+        "english": "How do you deal with failure?",
+        "korean": "실패를 어떻게 대처하나요?"
+      },
+      {
+        "english": "What is a belief you hold that many people disagree with?",
+        "korean": "많은 사람들이 동의하지 않는 당신의 신념은 무엇인가요?"
+      },
+      {
+        "english": "What motivates you to get up in the morning?",
+        "korean": "아침에 일어나게 하는 동기는 무엇인가요?"
+      },
+      {
+        "english": "What's a habit you want to break or build?",
+        "korean": "고치거나 새로 만들고 싶은 습관은 무엇인가요?"
+      },
+      {
+        "english": "How do you handle disagreements with friends or family?",
+        "korean": "친구나 가족과의 의견 차이를 어떻게 처리하나요?"
+      },
+      {
+        "english": "What is the most meaningful gift you've ever received?",
+        "korean": "받은 선물 중 가장 의미 있었던 것은 무엇인가요?"
+      },
+      {
+        "english": "How do you prioritize what's important in your life?",
+        "korean": "삶에서 중요한 것들을 어떻게 우선순위를 매기나요?"
+      },
+      {
+        "english": "What does success look like to you?",
+        "korean": "당신에게 성공은 어떤 모습인가요?"
+      },
+      {
+        "english": "What's a cause that's close to your heart?",
+        "korean": "당신의 마음에 가까운 대의나 원인은 무엇인가요?"
+      },
+      {
+        "english": "How do you practice self-care?",
+        "korean": "자기 관리를 어떻게 실천하나요?"
+      },
+      {
+        "english": "What's the best advice you've ever received?",
+        "korean": "지금까지 받은 조언 중 최고의 것은 무엇인가요?"
+      },
+      {
+        "english": "What role does spirituality or religion play in your life?",
+        "korean": "영성이나 종교는 당신의 삶에서 어떤 역할을 하나요?"
+      },
+      {
+        "english": "How do you define your personal identity?",
+        "korean": "자신의 정체성을 어떻게 정의하나요?"
+      },
+      {
+        "english": "What are you most grateful for in your life right now?",
+        "korean": "현재 당신의 삶에서 가장 감사한 것은 무엇인가요?"
+      },
+      {
+        "english": "How do you respond to criticism?",
+        "korean": "비판에 어떻게 대응하나요?"
+      },
+      {
+        "english": "What's a life lesson you learned from a mistake?",
+        "korean": "실수로부터 배운 인생 교훈은 무엇인가요?"
+      },
+      {
+        "english": "In four minutes, tell the story of your life with as much detail as possible.",
+        "korean": "4분 동안 가능한 한 자세하게 자신의 인생 이야기를 들려주세요."
+      },
+      {
+        "english": "Is there something you've wanted to do for a long time? Why haven't you done it yet?",
+        "korean": "오랫동안 하고 싶었던 것이 있나요? 왜 아직 하지 않았나요?"
+      },
+      {
+        "english": "What does friendship mean to you?",
+        "korean": "우정은 당신에게 어떤 의미인가요?"
+      },
+      {
+        "english": "Share five positive characteristics you consider about the other person. Take turns.",
+        "korean": "상대방에 대해 긍정적으로 생각하는 다섯 가지 특징을 공유하세요. 번갈아 가며 해보세요."
+      },
+      {
+        "english": "Say three sentences using the pronoun 'we.' For example, 'We are in this room feeling...'",
+        "korean": "'우리'라는 대명사를 사용하여 세 문장을 말해보세요. 예를 들어, '우리는 이 방에서 ...를 느끼고 있다.'"
+      }
     ],
     "Level 3": [
-      "If you were going to be a close friend to me, what should I know?",
-      "Share an embarrassing moment from recent life.",
-      "Am I like you expected me to be? Why or why not?",
-      "Tell me something out of your comfort zone.",
-      "When did you last cry? Why?",
-      "Describe your worst heartbreak. What did it teach you?",
-      "What do you think I need to let go of?",
-      "How can I best be there for you during this chapter in your life?",
-      "What are you trying to prove to yourself?",
-      "Have I ever hurt you? How?",
-      "What song reminds you of me?",
-      "If you were to die tonight with no opportunity to communicate with anyone, what would you regret not telling me? Why haven't you told me?",
-      "What is one personality trait your parents passed down to you that you wish they hadn't?",
-      "What is one personality trait your parents passed down that you are glad they did?",
-      "What do you think is the hardest part about loving you?",
-      "What would your younger self not believe about your life today?",
-      "What is the worst non-physical pain you have ever felt?",
-      "What do you think I should know about myself but am unaware of?",
-      "How do you think we compliment each other?",
-      "What do you think is one thing I could do to drastically improve my life?",
-      "What do you think is my biggest weakness?",
-      "Based on what you have learnt today, has your perception of me changed? How?",
-      "What would be the perfect gift for you?",
-      "What would make you feel closer to me?",
-      "How would you describe me to someone who doesn't know me?",
-      "Do you think we met for a reason? What reason?",
-      "What do you think is my biggest fear?",
-      "What do you think I need to hear right now?",
-      "When is the last time you said 'I love you' and meant it?",
-      "What lesson will you take away from our conversation?",
-      "What would you trust me to give advice on? Why?",
-      "When this game is over, what do you want to know more about?",
-      "Do you think everyone has a calling? Do you think I've found mine?",
-      "How can I add more happiness in your life?",
-      "Is there closure you never got to have?",
-      "Which questions were you most afraid to answer?",
-      "Which answer of mine made you happy?",
-      "What has this conversation taught you about yourself?",
-      "Do you feel differently about me than you did in the beginning of this game?"
+      {
+        "english": "If you were going to be a close friend to the other person, what should they know?",
+        "korean": "상대방과 가까운 친구가 되려면, 그들이 알아야 할 것은 무엇인가요?"
+      },
+      {
+        "english": "Share an embarrassing moment from recent life.",
+        "korean": "최근의 창피했던 순간을 공유해주세요."
+      },
+      {
+        "english": "What in your relationship with the other person are you most grateful for?",
+        "korean": "상대방과의 관계에서 가장 감사하게 생각하는 것은 무엇인가요?"
+      },
+      {
+        "english": "Is the other person like you expected them to be? Why or why not?",
+        "korean": "상대방은 당신이 예상했던 모습과 같나요? 왜 그렇거나 왜 그렇지 않나요?"
+      },
+      {
+        "english": "Say something out of your comfort zone.",
+        "korean": "자신의 편안한 영역을 벗어난 무언가를 말해보세요."
+      },
+      {
+        "english": "When did you last cry? Why?",
+        "korean": "마지막으로 언제 울었나요? 왜 그랬나요?"
+      },
+      {
+        "english": "Describe your worst heartbreak. What did it teach you?",
+        "korean": "가장 큰 마음의 상처를 묘사해주세요. 그것이 당신에게 무엇을 가르쳐주었나요?"
+      },
+      {
+        "english": "What do you think I need to let go of?",
+        "korean": "제가 놓아버려야 할 것은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "How can the other person best be there for you during this chapter in your life?",
+        "korean": "이 시기에 상대방이 어떻게 하면 당신에게 가장 큰 도움이 될 수 있을까요?"
+      },
+      {
+        "english": "What are you trying to prove to yourself?",
+        "korean": "자신에게 무엇을 증명하려고 하나요?"
+      },
+      {
+        "english": "Has the other person ever hurt you? How?",
+        "korean": "상대방이 당신을 상처 준 적이 있나요? 어떻게요?"
+      },
+      {
+        "english": "What song reminds you of the other person?",
+        "korean": "어떤 노래가 상대방을 떠올리게 하나요?"
+      },
+      {
+        "english": "If you were to die tonight with no opportunity to communicate with anyone, what would you regret not telling the other person? Why haven't you told them?",
+        "korean": "오늘 밤 누구와도 소통할 기회 없이 죽는다면, 상대방에게 말하지 못한 무엇을 후회할까요? 왜 아직 말하지 않았나요?"
+      },
+      {
+        "english": "What is one personality trait your parents passed down to you that you wish they hadn't?",
+        "korean": "부모님이 물려주신 성격 중 없었으면 하는 것은 무엇인가요?"
+      },
+      {
+        "english": "What is one personality trait your parents passed down that you are glad they did?",
+        "korean": "부모님이 물려주신 성격 중 고맙게 생각하는 것은 무엇인가요?"
+      },
+      {
+        "english": "What do you think is the hardest part about loving you?",
+        "korean": "당신을 사랑하는 데 가장 어려운 부분은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "What would your younger self not believe about your life today?",
+        "korean": "어린 시절의 당신이 현재의 삶에 대해 믿지 못할 것은 무엇인가요?"
+      },
+      {
+        "english": "What is the worst non-physical pain you have ever felt?",
+        "korean": "경험한 가장 심한 비신체적 고통은 무엇인가요?"
+      },
+      {
+        "english": "What do you think the other person should know about themselves but they are unaware of?",
+        "korean": "상대방이 알아야 하지만 알지 못하는 그들 자신에 대한 것은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "How do you think we compliment each other?",
+        "korean": "우리가 어떻게 서로를 보완한다고 생각하나요?"
+      },
+      {
+        "english": "What do you think is one thing the other person could do to drastically improve their life?",
+        "korean": "상대방이 그들의 삶을 획기적으로 개선하기 위해 할 수 있는 한 가지는 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "What do you think is the other person's biggest weakness?",
+        "korean": "상대방의 가장 큰 약점은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "Based on what you have learnt today, has your perception of the other person changed? How?",
+        "korean": "오늘 배운 것을 바탕으로, 상대방에 대한 인식이 변했나요? 어떻게 변했나요?"
+      },
+      {
+        "english": "What would be the perfect gift for you?",
+        "korean": "당신에게 완벽한 선물은 무엇인가요?"
+      },
+      {
+        "english": "What would make you feel closer to the other person?",
+        "korean": "상대방과 더 가까워졌다고 느끼게 하는 것은 무엇인가요?"
+      },
+      {
+        "english": "How would you describe the other person to someone who doesn't know them?",
+        "korean": "상대방을 모르는 사람에게 어떻게 설명하시겠어요?"
+      },
+      {
+        "english": "Do you think you both met for a reason? What reason?",
+        "korean": "두 사람이 만난 데는 이유가 있다고 생각하나요? 그 이유는 무엇인가요?"
+      },
+      {
+        "english": "What do you think is the other person's biggest fear?",
+        "korean": "상대방의 가장 큰 두려움은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "What do you think the other person needs to hear right now?",
+        "korean": "상대방이 지금 들어야 할 말은 무엇이라고 생각하나요?"
+      },
+      {
+        "english": "When is the last time you said 'I love you' and meant it?",
+        "korean": "마지막으로 진심으로 '사랑해'라고 말한 적은 언제인가요?"
+      },
+      {
+        "english": "What lesson will you take away from your conversation with the other person?",
+        "korean": "상대방과의 대화에서 어떤 교훈을 얻을 것인가요?"
+      },
+      {
+        "english": "What would you trust the other person to give advice on? Why?",
+        "korean": "어떤 점에서 상대방의 조언을 신뢰하나요? 왜 그렇게 생각하나요?"
+      },
+      {
+        "english": "When this game is over, what do you want to know more about?",
+        "korean": "이 게임이 끝나면, 무엇에 대해 더 알고 싶나요?"
+      },
+      {
+        "english": "Do you think everyone has a calling? Do you think the other person has found theirs?",
+        "korean": "모든 사람에게 소명이 있다고 생각하나요? 상대방은 그들의 소명을 찾았다고 생각하나요?"
+      },
+      {
+        "english": "How can the other person add more happiness in your life?",
+        "korean": "상대방이 어떻게 하면 당신의 삶에 더 많은 행복을 추가할 수 있을까요?"
+      },
+      {
+        "english": "Which questions were you most afraid to answer?",
+        "korean": "어떤 질문에 가장 답하기 두려웠나요?"
+      },
+      {
+        "english": "Which answer of the other person made you happy?",
+        "korean": "상대방의 어떤 대답이 당신을 기쁘게 했나요?"
+      },
+      {
+        "english": "What has this conversation taught you about yourself?",
+        "korean": "이 대화가 당신에게 자신에 대해 무엇을 가르쳐주었나요?"
+      },
+      {
+        "english": "Do you feel differently about the other person than you did in the beginning of this game?",
+        "korean": "이 게임을 시작할 때와 지금, 상대방에 대한 느낌이 달라졌나요?"
+      },
+      {
+        "english": "What is a painful experience you've grown from?",
+        "korean": "당신이 성장하게 된 고통스러운 경험은 무엇인가요?"
+      },
+      {
+        "english": "How do you confront your own biases?",
+        "korean": "자신의 편견에 어떻게 맞서나요?"
+      },
+      {
+        "english": "What are your deepest fears?",
+        "korean": "가장 깊은 두려움은 무엇인가요?"
+      },
+      {
+        "english": "What part of your past do you wish you could revisit?",
+        "korean": "과거의 어떤 부분을 다시 돌아보고 싶나요?"
+      },
+      {
+        "english": "How do you find meaning in difficult times?",
+        "korean": "어려운 시기에 어떻게 의미를 찾나요?"
+      },
+      {
+        "english": "What is a secret you've never told anyone?",
+        "korean": "아무에게도 말하지 않은 비밀은 무엇인가요?"
+      },
+      {
+        "english": "How do you envision your future?",
+        "korean": "미래를 어떻게 상상하나요?"
+      },
+      {
+        "english": "What do you believe is your purpose in life?",
+        "korean": "삶에서 당신의 목적은 무엇이라고 믿나요?"
+      },
+      {
+        "english": "How have your relationships shaped who you are?",
+        "korean": "관계가 당신을 어떻게 형성했나요?"
+      },
+      {
+        "english": "What is something you struggle to forgive others for?",
+        "korean": "다른 사람을 용서하기 어려운 것은 무엇인가요?"
+      },
+      {
+        "english": "How do you process feelings of regret?",
+        "korean": "후회의 감정을 어떻게 처리하나요?"
+      },
+      {
+        "english": "What do you wish others understood about you?",
+        "korean": "다른 사람들이 당신에 대해 이해해주길 바라는 것은 무엇인가요?"
+      },
+      {
+        "english": "How do you handle vulnerability in relationships?",
+        "korean": "관계에서 취약함을 어떻게 다루나요?"
+      },
+      {
+        "english": "What impact do you want to have on the world?",
+        "korean": "세상에 어떤 영향을 미치고 싶나요?"
+      },
+      {
+        "english": "How do you navigate feelings of inadequacy?",
+        "korean": "부족함의 감정을 어떻게 극복하나요?"
+      },
+      {
+        "english": "What is a dream you've given up on, and how do you feel about it?",
+        "korean": "포기한 꿈은 무엇이며, 그것에 대해 어떻게 느끼나요?"
+      },
+      {
+        "english": "How do you cope with change or uncertainty?",
+        "korean": "변화나 불확실성에 어떻게 대처하나요?"
+      },
+      {
+        "english": "What does love mean to you?",
+        "korean": "사랑은 당신에게 어떤 의미인가요?"
+      },
+      {
+        "english": "Do you believe in yourself?",
+        "korean": "자신을 믿나요?"
+      },
+      {
+        "english": "Do you believe in determinism or free-will?",
+        "korean": "결정론을 믿나요, 아니면 자유의지를 믿나요?"
+      },
+      {
+        "english": "How do you think about life?",
+        "korean": "삶에 대해 어떻게 생각하나요?"
+      },
+      {
+        "english": "Do you think there are good and bad people or do you think there are only good people in bad situations?",
+        "korean": "선한 사람과 악한 사람이 있다고 생각하나요, 아니면 나쁜 상황에 처한 선한 사람들만 있다고 생각하나요?"
+      },
+      {
+        "english": "What is a question you wish people would ask you?",
+        "korean": "사람들이 당신에게 물어봐주길 바라는 질문은 무엇인가요?"
+      },
+      {
+        "english": "How have your experiences with loss shaped you?",
+        "korean": "상실의 경험이 당신을 어떻게 형성했나요?"
+      },
+      {
+        "english": "Tell the other person what you like most about them. Be very honest and say things you wouldn't say to someone you've just met.",
+        "korean": "상대방에 대해 가장 좋아하는 것을 말해주세요. 매우 솔직하게, 처음 만난 사람에게는 하지 않을 말을 해보세요."
+      }
     ]
   }
   

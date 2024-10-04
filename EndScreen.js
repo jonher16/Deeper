@@ -26,25 +26,24 @@ export default function EndScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Animated.Text
-        style={[
-          styles.endText,
-          {
-            opacity: quoteAnim,
-            transform: [
-              {
-                translateY: quoteAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [50, 0],
-                }),
-              },
-            ],
-          },
-        ]}
+      <Animated.View
+        style={{
+          opacity: quoteAnim,
+          transform: [
+            {
+              translateY: quoteAnim.interpolate({
+                inputRange: [0, 1],
+                outputRange: [50, 0],
+              }),
+            },
+          ],
+        }}
       >
-        The End!
-        <br /> <br />In In a world that often forgets to listen, thank you for taking the time to truly connect :) Spread the love!
-      </Animated.Text>
+        <Text style={styles.endTitle}>The End!</Text>
+        <Text style={styles.endText}>
+          In a world that often forgets to listen, thank you for taking the time to truly connect :) Spread the love!
+        </Text>
+      </Animated.View>
       <Animated.View style={{ opacity: buttonAnim }}>
         <TouchableOpacity style={styles.button} onPress={backToStart}>
           <Text style={styles.buttonText}>Back to Start</Text>
@@ -61,6 +60,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+  },
+  endTitle: {
+    fontSize: 36,
+    color: '#FFFFFF',
+    fontFamily: 'Poppins_700Bold',
+    textAlign: 'center',
+    marginBottom: 20,
   },
   endText: {
     fontSize: 24,
