@@ -1,20 +1,55 @@
 // EndScreen.js
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 
 export default function EndScreen({ navigation }) {
+  const quoteAnim = useRef(new Animated.Value(0)).current;
+  const buttonAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(quoteAnim, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: true,
+    }).start(() => {
+      Animated.timing(buttonAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+    });
+  }, []);
+
   const backToStart = () => {
     navigation.navigate('Start');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.endText}>
-        The End! You know now each other better than 99% of the people in the world. Keep up your relationship :)
-      </Text>
-      <TouchableOpacity style={styles.button} onPress={backToStart}>
-        <Text style={styles.buttonText}>Back to Start</Text>
-      </TouchableOpacity>
+      <Animated.Text
+        style={[
+          styles.endText,
+          {
+            opacity: quoteAnim,
+            transform: [
+              {
+                translateY: quoteAnim.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [50, 0],
+                }),
+              },
+            ],
+          },
+        ]}
+      >
+        The End!
+        <br /> <br />In In a world that often forgets to listen, thank you for taking the time to truly connect :) Spread the love!
+      </Animated.Text>
+      <Animated.View style={{ opacity: buttonAnim }}>
+        <TouchableOpacity style={styles.button} onPress={backToStart}>
+          <Text style={styles.buttonText}>Back to Start</Text>
+        </TouchableOpacity>
+      </Animated.View>
     </View>
   );
 }
@@ -22,25 +57,27 @@ export default function EndScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+    backgroundColor: '#1C1C1C',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#fff',
   },
   endText: {
     fontSize: 24,
+    color: '#FFFFFF',
+    fontFamily: 'Roboto_400Regular',
     textAlign: 'center',
     marginBottom: 50,
   },
   button: {
-    backgroundColor: '#1E90FF',
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 30,
     paddingVertical: 15,
-    borderRadius: 10,
+    borderRadius: 30,
   },
   buttonText: {
-    color: '#fff',
+    color: '#1C1C1C',
     fontSize: 20,
+    fontFamily: 'Poppins_700Bold',
   },
 });

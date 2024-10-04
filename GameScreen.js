@@ -1,11 +1,16 @@
 // GameScreen.js
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import questionsData from './questions.json';
 
 export default function GameScreen({ route, navigation }) {
   const [currentQuestion, setCurrentQuestion] = useState('');
   const [level, setLevel] = useState(route.params.level);
+  const [showLevelScreen, setShowLevelScreen] = useState(true);
+
+  const questionAnim = useRef(new Animated.Value(0)).current;
+  const buttonsAnim = useRef(new Animated.Value(0)).current;
+  const levelAnim = useRef(new Animated.Value(1)).current;
 
   const getRandomQuestion = () => {
     const levelKey = `Level ${level}`;
@@ -21,28 +26,94 @@ export default function GameScreen({ route, navigation }) {
   const nextLevel = () => {
     if (level < 3) {
       setLevel(level + 1);
-      setCurrentQuestion('');
+      setShowLevelScreen(true);
     } else {
       navigation.navigate('End');
     }
   };
 
   useEffect(() => {
+    // Show Level Screen Animation
+    levelAnim.setValue(1);
+    questionAnim.setValue(0);
+    buttonsAnim.setValue(0);
+
     getRandomQuestion();
+
+    Animated.timing(levelAnim, {
+      toValue: 0,
+      duration: 1000,
+      delay: 1000,
+      useNativeDriver: true,
+    }).start(() => {
+      setShowLevelScreen(false);
+      // Animate question and buttons
+      Animated.timing(questionAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+      Animated.timing(buttonsAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+    });
   }, [level]);
+
+  const onNewQuestion = () => {
+    getRandomQuestion();
+    // Animate question
+    questionAnim.setValue(0);
+    Animated.timing(questionAnim, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.levelText}>Level {level}</Text>
-      <Text style={styles.questionText}>{currentQuestion}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.smallButton} onPress={getRandomQuestion}>
-          <Text style={styles.buttonText}>New Question</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.smallButton} onPress={nextLevel}>
-          <Text style={styles.buttonText}>{level === 3 ? 'End Game' : 'Next Level'}</Text>
-        </TouchableOpacity>
-      </View>
+      {showLevelScreen ? (
+        <Animated.View
+          style={[
+            styles.levelScreen,
+            {
+              opacity: levelAnim,
+            },
+          ]}
+        >
+          <Text style={styles.levelText}>Level {level}</Text>
+        </Animated.View>
+      ) : (
+        <>
+          <Animated.Text
+            style={[
+              styles.questionText,
+              {
+                opacity: questionAnim,
+              },
+            ]}
+          >
+            {currentQuestion}
+          </Animated.Text>
+          <Animated.View
+            style={[
+              styles.buttonContainer,
+              {
+                opacity: buttonsAnim,
+              },
+            ]}
+          >
+            <TouchableOpacity style={styles.smallButton} onPress={onNewQuestion}>
+              <Text style={styles.buttonText}>New Question</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.smallButton} onPress={nextLevel}>
+              <Text style={styles.buttonText}>{level === 3 ? 'End Game' : 'Next Level'}</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </>
+      )}
     </View>
   );
 }
@@ -50,18 +121,25 @@ export default function GameScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+    backgroundColor: '#1C1C1C',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#fff',
+  },
+  levelScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   levelText: {
-    fontSize: 24,
-    marginBottom: 20,
+    fontSize: 48,
+    color: '#FFFFFF',
+    fontFamily: 'Poppins_700Bold',
   },
   questionText: {
     fontSize: 28,
+    color: '#FFFFFF',
+    fontFamily: 'Roboto_400Regular',
     textAlign: 'center',
     marginBottom: 100,
   },
@@ -74,13 +152,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   smallButton: {
-    backgroundColor: '#1E90FF',
+    backgroundColor: '#FFFFFF',
     paddingHorizontal: 20,
     paddingVertical: 15,
-    borderRadius: 10,
+    borderRadius: 30,
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 18,
+    color: '#1C1C1C',
+    fontSize: 16,
+    fontFamily: 'Poppins_700Bold',
   },
 });
