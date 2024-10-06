@@ -26,7 +26,21 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Start">
+      <Stack.Navigator initialRouteName="Start" screenOptions={{
+    cardStyle: {
+      backgroundColor: '#1C1C1C',
+    },
+    headerShown: false,
+    transitionSpec: {
+      open: { animation: 'timing', config: { duration: 300 } },
+      close: { animation: 'timing', config: { duration: 300 } },
+    },
+    cardStyleInterpolator: ({ current }) => ({
+      cardStyle: {
+        opacity: current.progress,
+      },
+    }),
+  }}>
         <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Game" component={GameScreen} options={{ headerShown: false }} />
         <Stack.Screen name="End" component={EndScreen} options={{ headerShown: false }} />

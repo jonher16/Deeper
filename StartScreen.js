@@ -52,7 +52,7 @@ export default function StartScreen({ navigation }) {
           },
         ]}
       >
-        How Deep Will You Go?
+        Deeper
       </Animated.Text>
       <Animated.Text
         style={[

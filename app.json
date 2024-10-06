@@ -1,31 +1,35 @@
 {
   "expo": {
-    "name": "HowDeepWillYouGo",
-    "slug": "HowDeepWillYouGo",
+    "name": "Deeper",
+    "slug": "Deeper",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1C1C1C"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#000000",
+      "barStyle": "light-content"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#1C1C1C"
       },
-      "package": "com.jonher16.HowDeepWillYouGo"
+      "package": "com.jonher16.Deeper"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/icon.png"
     },
     "plugins": [
       "expo-router",
@@ -36,8 +40,11 @@
     },
     "extra": {
       "eas": {
-        "projectId": "7547961f-c335-45d0-8174-0b5e56a9f9d5"
+        "projectId": "8b983027-ba2e-458f-8f1a-d3a5ffcb5678"
       }
     }
-  }
+  },
+  "androidNavigationBar": {
+      "visible": "immersive"
+    }
 }
