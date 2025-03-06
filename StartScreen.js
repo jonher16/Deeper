@@ -18,24 +18,8 @@ export default function StartScreen({ navigation }) {
   const figureOpacity = useRef(new Animated.Value(0)).current;
   const rippleAnim = useRef(new Animated.Value(0)).current;
   const rippleDuration = 3000;
-  
-  const [hasRecentSession, setHasRecentSession] = useState(false);
 
   useEffect(() => {
-    // Check for recent session
-    const checkForRecentSession = async () => {
-      try {
-        const recentSession = await AsyncStorage.getItem('recentSession');
-        if (recentSession !== null) {
-          setHasRecentSession(true);
-        }
-      } catch (error) {
-        console.error('Failed to check for recent session', error);
-      }
-    };
-    
-    checkForRecentSession();
-    
     // Animate header elements sequentially: title -> subtitle -> buttons
     Animated.timing(titleAnim, {
       toValue: 1,
@@ -104,37 +88,6 @@ export default function StartScreen({ navigation }) {
   const navigateToHistory = () => {
     navigation.navigate('History');
   };
-  
-  const continueRecentSession = async () => {
-    try {
-      const recentSession = await AsyncStorage.getItem('recentSession');
-      if (recentSession !== null) {
-        const sessionData = JSON.parse(recentSession);
-        if (sessionData.type === 'random') {
-          navigation.navigate('Game', { 
-            level: sessionData.level,
-            index: sessionData.questionIndex 
-          });
-        } else if (sessionData.type === '36') {
-          navigation.navigate('Game36', { 
-            index: sessionData.questionIndex 
-          });
-        } else if (sessionData.type === 'custom') {
-          navigation.navigate('GameCustom', { 
-            deckIds: sessionData.deckIds,
-            level: sessionData.level,
-            questionIndex: sessionData.questionIndex 
-          });
-        }
-      } else {
-        setHasRecentSession(false);
-        Alert.alert('Error', 'No recent session found.');
-      }
-    } catch (error) {
-      console.error('Failed to load recent session', error);
-      Alert.alert('Error', 'Failed to load recent session.');
-    }
-  };
 
   // Define style for the single ripple using its animation value
   const rippleStyle = {
@@ -183,15 +136,6 @@ export default function StartScreen({ navigation }) {
       </View>
       
       <Animated.View style={{ opacity: buttonAnim, width: '100%', alignItems: 'center' }}>
-        {hasRecentSession && (
-          <TouchableOpacity 
-            style={[styles.button, styles.continueButton]} 
-            onPress={continueRecentSession}
-          >
-            <Text style={styles.continueButtonText}>Continue Session</Text>
-          </TouchableOpacity>
-        )}
-        
         <TouchableOpacity style={styles.button} onPress={startGame36}>
           <Text style={styles.buttonText}>Original 36</Text>
         </TouchableOpacity>
@@ -284,17 +228,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 15,
   },
-  continueButton: {
-    backgroundColor: '#4A90E2',
-    marginBottom: 30,
-  },
   buttonText: {
     color: '#1C1C1C',
-    fontSize: 18,
-    fontFamily: 'Poppins_700Bold',
-  },
-  continueButtonText: {
-    color: '#FFFFFF',
     fontSize: 18,
     fontFamily: 'Poppins_700Bold',
   },

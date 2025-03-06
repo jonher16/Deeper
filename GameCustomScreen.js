@@ -17,7 +17,7 @@ export default function GameCustomScreen({ route, navigation }) {
   const [customSets, setCustomSets] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [level, setLevel] = useState(1);
-  const [showLevelScreen, setShowLevelScreen] = useState(true);
+  const [showLevelScreen, setShowLevelScreen] = useState(true); // Ensure this is true initially
   const [showTranslation, setShowTranslation] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [favorites, setFavorites] = useState([]);
@@ -26,7 +26,7 @@ export default function GameCustomScreen({ route, navigation }) {
   const questionAnim = useRef(new Animated.Value(0)).current;
   const buttonsAnim = useRef(new Animated.Value(0)).current;
   const levelAnim = useRef(new Animated.Value(1)).current;
-  const favoriteAnim = useRef(new Animated.Value(0)).current;
+  const favoriteAnim = useRef(new Animated.Value(1)).current;
 
   // Load custom sets and get questions
   useEffect(() => {
@@ -71,10 +71,11 @@ export default function GameCustomScreen({ route, navigation }) {
           return;
         }
         
-        // Filter questions by level
-        const levelQuestions = loadedQuestions.filter(q => q.level === level);
+        // Filter questions by level - FIX: parse level as integer for comparison
+        const levelQuestions = loadedQuestions.filter(q => parseInt(q.level) === level);
+        
         if (levelQuestions.length > 0) {
-          setQuestions(levelQuestions);
+          setQuestions(loadedQuestions); // Store all questions
           setCurrentQuestion(levelQuestions[0]);
           checkIfFavorite(levelQuestions[0]);
         } else {
@@ -192,7 +193,9 @@ export default function GameCustomScreen({ route, navigation }) {
   };
 
   const getNextQuestion = () => {
+    // FIX: Parse level as integer for comparison
     const levelQuestions = questions.filter(q => parseInt(q.level) === level);
+    
     if (levelQuestions.length > 0) {
       let nextQuestion;
       let nextIndex;
@@ -257,7 +260,9 @@ export default function GameCustomScreen({ route, navigation }) {
     favoriteAnim.setValue(1); // Set this to 1 so the icon is visible initially
 
     // Get level-specific questions when level changes
+    // FIX: Parse level as integer for comparison
     const levelQuestions = questions.filter(q => parseInt(q.level) === level);
+    
     if (levelQuestions.length > 0) {
       setCurrentQuestionIndex(0); // Reset index when changing levels
       setCurrentQuestion(levelQuestions[0]);
@@ -346,6 +351,7 @@ export default function GameCustomScreen({ route, navigation }) {
             }}
           >
             <View style={styles.questionContainer}>
+              {/* Modified heart position to top center above question */}
               <TouchableOpacity 
                 style={styles.favoriteButton} 
                 onPress={toggleFavorite}
@@ -432,14 +438,15 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     padding: 20,
+    paddingTop: 40, // Add more top padding to make room for the heart
   },
   favoriteButton: {
     position: 'absolute',
-    top: -20,
+    top: 0,
     alignSelf: 'center',
-    padding: 15,
-    backgroundColor: 'rgba(28, 28, 28, 0.9)',
-    borderRadius: 25,
+    padding: 12,
+    backgroundColor: 'rgba(28, 28, 28, 0.8)',
+    borderRadius: 22,
     zIndex: 10,
     elevation: 3,
     shadowColor: "#000",

@@ -10,6 +10,7 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
+  Keyboard,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
@@ -21,9 +22,26 @@ export default function CustomQuestionsScreen({ navigation }) {
   const [newQuestion, setNewQuestion] = useState('');
   const [newTranslation, setNewTranslation] = useState('');
   const [selectedLevel, setSelectedLevel] = useState(1);
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
     loadCustomSets();
+    
+    // Add keyboard show/hide listeners
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => setKeyboardVisible(true)
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => setKeyboardVisible(false)
+    );
+
+    // Clean up listeners on unmount
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
   }, []);
 
   const loadCustomSets = async () => {
@@ -173,9 +191,9 @@ export default function CustomQuestionsScreen({ navigation }) {
 
   const renderSetItem = (set) => {
     const isValid = validateSetForSaving(set);
-    const level1Count = set.questions.filter(q => q.level === 1).length;
-    const level2Count = set.questions.filter(q => q.level === 2).length;
-    const level3Count = set.questions.filter(q => q.level === 3).length;
+    const level1Count = set.questions.filter(q => parseInt(q.level) === 1).length;
+    const level2Count = set.questions.filter(q => parseInt(q.level) === 2).length;
+    const level3Count = set.questions.filter(q => parseInt(q.level) === 3).length;
     
     return (
       <TouchableOpacity
@@ -222,8 +240,9 @@ export default function CustomQuestionsScreen({ navigation }) {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      keyboardVerticalOffset={100}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
+      enabled={true}
     >
       <View style={styles.header}>
         <TouchableOpacity
@@ -236,7 +255,15 @@ export default function CustomQuestionsScreen({ navigation }) {
         <View style={{ width: 24 }} />
       </View>
 
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView 
+        contentContainerStyle={[
+          styles.content,
+          // Add extra padding at the bottom when keyboard is visible
+          keyboardVisible && { paddingBottom: 300 }
+        ]}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={true}
+      >
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Create New Set</Text>
           <View style={styles.inputRow}>
@@ -376,7 +403,7 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
-    paddingBottom: 100,
+    paddingBottom: 150, // Add more bottom padding
   },
   section: {
     marginBottom: 30,
