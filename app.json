@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
-    "newArchEnabled"  : true,
+    "newArchEnabled": true,
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/icon.png",
@@ -18,7 +18,8 @@
       "barStyle": "light-content"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jonher16.Deeper"
     },
     "android": {
       "adaptiveIcon": {
@@ -46,6 +47,6 @@
     }
   },
   "androidNavigationBar": {
-      "visible": "immersive"
-    }
+    "visible": "immersive"
+  }
 }

@@ -1,17 +1,41 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Animated, Easing } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  StyleSheet, 
+  Animated, 
+  Easing,
+  Alert
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function StartScreen({ navigation }) {
   const titleAnim = useRef(new Animated.Value(0)).current;
   const subtitleAnim = useRef(new Animated.Value(0)).current;
   const buttonAnim = useRef(new Animated.Value(0)).current;
-  const figureOpacity = useRef(new Animated.Value(0)).current; // overall fade-in for the ripple
-
-  // Single ripple animation value
+  const figureOpacity = useRef(new Animated.Value(0)).current;
   const rippleAnim = useRef(new Animated.Value(0)).current;
-  const rippleDuration = 3000; // duration for one ripple cycle
+  const rippleDuration = 3000;
+  
+  const [hasRecentSession, setHasRecentSession] = useState(false);
 
   useEffect(() => {
+    // Check for recent session
+    const checkForRecentSession = async () => {
+      try {
+        const recentSession = await AsyncStorage.getItem('recentSession');
+        if (recentSession !== null) {
+          setHasRecentSession(true);
+        }
+      } catch (error) {
+        console.error('Failed to check for recent session', error);
+      }
+    };
+    
+    checkForRecentSession();
+    
     // Animate header elements sequentially: title -> subtitle -> buttons
     Animated.timing(titleAnim, {
       toValue: 1,
@@ -38,7 +62,7 @@ export default function StartScreen({ navigation }) {
       useNativeDriver: true,
     }).start();
 
-    // Delay starting the ripple loop until after the header appears (e.g., after 3000ms)
+    // Delay starting the ripple loop until after the header appears
     setTimeout(() => {
       Animated.loop(
         Animated.sequence([
@@ -59,12 +83,57 @@ export default function StartScreen({ navigation }) {
     }, 3000);
   }, []);
 
-  const startGame = () => {
-    navigation.navigate('Game', { level: 1 });
-  };
+  // Random game mode has been removed
 
   const startGame36 = () => {
     navigation.navigate('Game36');
+  };
+  
+  const startCustomGame = () => {
+    navigation.navigate('DeckSelection');
+  };
+  
+  const navigateToFavorites = () => {
+    navigation.navigate('Favorites');
+  };
+  
+  const navigateToCustomQuestions = () => {
+    navigation.navigate('CustomQuestions');
+  };
+  
+  const navigateToHistory = () => {
+    navigation.navigate('History');
+  };
+  
+  const continueRecentSession = async () => {
+    try {
+      const recentSession = await AsyncStorage.getItem('recentSession');
+      if (recentSession !== null) {
+        const sessionData = JSON.parse(recentSession);
+        if (sessionData.type === 'random') {
+          navigation.navigate('Game', { 
+            level: sessionData.level,
+            index: sessionData.questionIndex 
+          });
+        } else if (sessionData.type === '36') {
+          navigation.navigate('Game36', { 
+            index: sessionData.questionIndex 
+          });
+        } else if (sessionData.type === 'custom') {
+          navigation.navigate('GameCustom', { 
+            deckIds: sessionData.deckIds,
+            level: sessionData.level,
+            questionIndex: sessionData.questionIndex 
+          });
+        }
+      } else {
+        setHasRecentSession(false);
+        Alert.alert('Error', 'No recent session found.');
+      }
+    } catch (error) {
+      console.error('Failed to load recent session', error);
+      Alert.alert('Error', 'Failed to load recent session.');
+    }
   };
 
   // Define style for the single ripple using its animation value
@@ -112,13 +181,53 @@ export default function StartScreen({ navigation }) {
           Into Deeper Human Connections
         </Animated.Text>
       </View>
-      <Animated.View style={{ opacity: buttonAnim }}>
+      
+      <Animated.View style={{ opacity: buttonAnim, width: '100%', alignItems: 'center' }}>
+        {hasRecentSession && (
+          <TouchableOpacity 
+            style={[styles.button, styles.continueButton]} 
+            onPress={continueRecentSession}
+          >
+            <Text style={styles.continueButtonText}>Continue Session</Text>
+          </TouchableOpacity>
+        )}
+        
         <TouchableOpacity style={styles.button} onPress={startGame36}>
-          <Text style={styles.buttonText}>Deeper: Original 36</Text>
+          <Text style={styles.buttonText}>Original 36</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, { marginTop: 20 }]} onPress={startGame}>
-          <Text style={styles.buttonText}>Deeper: Random</Text>
+        
+        <TouchableOpacity 
+          style={[styles.button, { marginTop: 15 }]} 
+          onPress={startCustomGame}
+        >
+          <Text style={styles.buttonText}>Custom</Text>
         </TouchableOpacity>
+        
+        <View style={styles.smallButtonsContainer}>
+          <TouchableOpacity 
+            style={styles.smallButton} 
+            onPress={navigateToFavorites}
+          >
+            <Ionicons name="heart" size={20} color="#FFFFFF" />
+            <Text style={styles.smallButtonText}>Favorites</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity 
+            style={styles.smallButton} 
+            onPress={navigateToCustomQuestions}
+          >
+            <Ionicons name="create" size={20} color="#FFFFFF" />
+            <Text style={styles.smallButtonText}>Create</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity 
+            style={styles.smallButton} 
+            onPress={navigateToHistory}
+          >
+            <Ionicons name="time" size={20} color="#FFFFFF" />
+            <Text style={styles.smallButtonText}>History</Text>
+          </TouchableOpacity>
+        </View>
       </Animated.View>
     </View>
   );
@@ -138,7 +247,7 @@ const styles = StyleSheet.create({
   },
   rippleContainer: {
     position: 'absolute',
-    top: 0, // ripple originates where the title begins
+    top: 0,
     width: 120,
     height: 120,
     alignItems: 'center',
@@ -164,19 +273,50 @@ const styles = StyleSheet.create({
     color: '#AAAAAA',
     fontFamily: 'Roboto_400Regular',
     textAlign: 'center',
+    marginBottom: 60,
   },
   button: {
-    marginTop: 100,
+    width: '80%',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 40,
     paddingVertical: 15,
     borderRadius: 30,
     alignItems: 'center',
-    marginVertical: 10,
+    marginBottom: 15,
+  },
+  continueButton: {
+    backgroundColor: '#4A90E2',
+    marginBottom: 30,
   },
   buttonText: {
     color: '#1C1C1C',
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Poppins_700Bold',
   },
+  continueButtonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontFamily: 'Poppins_700Bold',
+  },
+  smallButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 20,
+    width: '90%',
+    flexWrap: 'wrap',
+  },
+  smallButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    margin: 5,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  smallButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontFamily: 'Poppins_700Bold',
+    marginLeft: 6,
+  }
 });
