@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import StartScreen from './StartScreen';
 import GameScreen from './GameScreen';
+import GameScreen36 from './GameScreen36';
 import EndScreen from './EndScreen';
 
 const Stack = createStackNavigator();
@@ -43,6 +44,7 @@ export default function App() {
   }}>
         <Stack.Screen name="Start" component={StartScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Game" component={GameScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Game36" component={GameScreen36} options={{ headerShown: false }} />
         <Stack.Screen name="End" component={EndScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
