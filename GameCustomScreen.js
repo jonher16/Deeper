@@ -17,11 +17,13 @@ export default function GameCustomScreen({ route, navigation }) {
   const [customSets, setCustomSets] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [level, setLevel] = useState(1);
-  const [showLevelScreen, setShowLevelScreen] = useState(true); // Ensure this is true initially
+  // Always ensure showLevelScreen starts as true
+  const [showLevelScreen, setShowLevelScreen] = useState(true);
   const [showTranslation, setShowTranslation] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [questionsLoaded, setQuestionsLoaded] = useState(false);
 
   const questionAnim = useRef(new Animated.Value(0)).current;
   const buttonsAnim = useRef(new Animated.Value(0)).current;
@@ -32,6 +34,9 @@ export default function GameCustomScreen({ route, navigation }) {
   useEffect(() => {
     loadCustomSets();
     loadFavorites();
+    
+    // Reset showLevelScreen to true whenever we navigate to this screen
+    setShowLevelScreen(true);
   }, []);
 
   const loadCustomSets = async () => {
@@ -78,6 +83,7 @@ export default function GameCustomScreen({ route, navigation }) {
           setQuestions(loadedQuestions); // Store all questions
           setCurrentQuestion(levelQuestions[0]);
           checkIfFavorite(levelQuestions[0]);
+          setQuestionsLoaded(true); // Mark that questions have been loaded
         } else {
           // If no questions for current level, show message
           setCurrentQuestion({
@@ -85,10 +91,12 @@ export default function GameCustomScreen({ route, navigation }) {
             korean: `레벨 ${level}에 사용할 수 있는 질문이 없습니다`,
             level: level
           });
+          setQuestionsLoaded(true); // Mark that we've finished loading, even if no questions
         }
       }
     } catch (error) {
       console.error('Failed to load custom sets', error);
+      setQuestionsLoaded(true); // Mark as loaded even on error
     }
   };
 
@@ -240,7 +248,7 @@ export default function GameCustomScreen({ route, navigation }) {
   const nextLevel = async () => {
     if (level < 3) {
       setLevel(level + 1);
-      setShowLevelScreen(true);
+      setShowLevelScreen(true); // Show level screen for next level
       setCurrentQuestionIndex(0);
       
       // Save session before moving to next level
@@ -252,7 +260,10 @@ export default function GameCustomScreen({ route, navigation }) {
     }
   };
 
+  // This effect runs when level or questions change
   useEffect(() => {
+    if (!questionsLoaded) return; // Skip if questions aren't loaded yet
+    
     // Show Level Screen Animation
     levelAnim.setValue(1);
     questionAnim.setValue(0);
@@ -276,6 +287,7 @@ export default function GameCustomScreen({ route, navigation }) {
       });
     }
 
+    // Start the level screen animation
     Animated.timing(levelAnim, {
       toValue: 0,
       duration: 1000,
@@ -295,7 +307,7 @@ export default function GameCustomScreen({ route, navigation }) {
         useNativeDriver: true,
       }).start();
     });
-  }, [level, questions]);
+  }, [level, questionsLoaded]);
 
   const onNewQuestion = () => {
     getNextQuestion();
