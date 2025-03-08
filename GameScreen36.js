@@ -327,12 +327,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     padding: 20,
+    paddingTop: 40, // Add more top padding to make room for the heart
   },
   favoriteButton: {
     position: 'absolute',
-    top: 10,
-    right: 10,
-    padding: 10,
+    top: 0,
+    alignSelf: 'center',
+    padding: 12,
     backgroundColor: 'rgba(28, 28, 28, 0.8)',
     borderRadius: 22,
     zIndex: 10,
