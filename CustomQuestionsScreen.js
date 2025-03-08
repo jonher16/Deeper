@@ -23,6 +23,8 @@ export default function CustomQuestionsScreen({ navigation }) {
   const [newTranslation, setNewTranslation] = useState('');
   const [selectedLevel, setSelectedLevel] = useState(1);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
+  // Add new state for filtering questions
+  const [activeFilter, setActiveFilter] = useState('All');
 
   useEffect(() => {
     loadCustomSets();
@@ -189,6 +191,24 @@ export default function CustomQuestionsScreen({ navigation }) {
     }
   };
 
+  // Function to filter questions based on the active filter
+  const getFilteredQuestions = () => {
+    if (!selectedSet) return [];
+    
+    if (activeFilter === 'All') {
+      return selectedSet.questions;
+    } else {
+      // Extract level number from filter string "Level X"
+      const filterLevel = parseInt(activeFilter.split(' ')[1]);
+      return selectedSet.questions.filter(q => parseInt(q.level) === filterLevel);
+    }
+  };
+
+  // Handle filter button press
+  const handleFilterPress = (filter) => {
+    setActiveFilter(filter);
+  };
+
   const renderSetItem = (set) => {
     const isValid = validateSetForSaving(set);
     const level1Count = set.questions.filter(q => parseInt(q.level) === 1).length;
@@ -236,6 +256,9 @@ export default function CustomQuestionsScreen({ navigation }) {
       </View>
     </View>
   );
+
+  // Get the questions filtered by the active filter
+  const filteredQuestions = getFilteredQuestions();
 
   return (
     <KeyboardAvoidingView
@@ -349,25 +372,63 @@ export default function CustomQuestionsScreen({ navigation }) {
               <Text style={styles.sectionTitle}>Questions in This Set</Text>
               
               <View style={styles.levelFilterButtons}>
-                <TouchableOpacity style={styles.levelFilterButton}>
-                  <Text style={styles.levelFilterText}>All</Text>
+                <TouchableOpacity 
+                  style={[
+                    styles.levelFilterButton,
+                    activeFilter === 'All' && styles.activeLevelFilterButton
+                  ]}
+                  onPress={() => handleFilterPress('All')}
+                >
+                  <Text style={[
+                    styles.levelFilterText,
+                    activeFilter === 'All' && styles.activeLevelFilterText
+                  ]}>All</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.levelFilterButton}>
-                  <Text style={styles.levelFilterText}>Level 1</Text>
+                <TouchableOpacity 
+                  style={[
+                    styles.levelFilterButton,
+                    activeFilter === 'Level 1' && styles.activeLevelFilterButton
+                  ]}
+                  onPress={() => handleFilterPress('Level 1')}
+                >
+                  <Text style={[
+                    styles.levelFilterText,
+                    activeFilter === 'Level 1' && styles.activeLevelFilterText
+                  ]}>Level 1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.levelFilterButton}>
-                  <Text style={styles.levelFilterText}>Level 2</Text>
+                <TouchableOpacity 
+                  style={[
+                    styles.levelFilterButton,
+                    activeFilter === 'Level 2' && styles.activeLevelFilterButton
+                  ]}
+                  onPress={() => handleFilterPress('Level 2')}
+                >
+                  <Text style={[
+                    styles.levelFilterText,
+                    activeFilter === 'Level 2' && styles.activeLevelFilterText
+                  ]}>Level 2</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.levelFilterButton}>
-                  <Text style={styles.levelFilterText}>Level 3</Text>
+                <TouchableOpacity 
+                  style={[
+                    styles.levelFilterButton,
+                    activeFilter === 'Level 3' && styles.activeLevelFilterButton
+                  ]}
+                  onPress={() => handleFilterPress('Level 3')}
+                >
+                  <Text style={[
+                    styles.levelFilterText,
+                    activeFilter === 'Level 3' && styles.activeLevelFilterText
+                  ]}>Level 3</Text>
                 </TouchableOpacity>
               </View>
               
-              {selectedSet.questions.length > 0 ? (
-                selectedSet.questions.map(renderQuestionItem)
+              {filteredQuestions.length > 0 ? (
+                filteredQuestions.map(renderQuestionItem)
               ) : (
                 <Text style={styles.emptyText}>
-                  No questions in this set. Add one above!
+                  {activeFilter === 'All' 
+                    ? 'No questions in this set. Add one above!' 
+                    : `No ${activeFilter} questions in this set.`}
                 </Text>
               )}
             </View>
@@ -553,10 +614,16 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginRight: 8,
   },
+  activeLevelFilterButton: {
+    backgroundColor: '#4A90E2',
+  },
   levelFilterText: {
     color: '#FFFFFF',
     fontFamily: 'Roboto_400Regular',
     fontSize: 12,
+  },
+  activeLevelFilterText: {
+    fontFamily: 'Poppins_700Bold',
   },
   questionItem: {
     backgroundColor: '#2A2A2A',
